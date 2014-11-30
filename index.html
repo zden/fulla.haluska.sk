@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Geometric Toy - Fulla</title>
+
+  	<meta property="title" content="Geometric Toy - Fulla"/>
+	<meta property="og:title" content="Geometric Toy - Fulla"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="fulla.jpg"/>
+	<meta property="og:description" content="Created during Hackathon at Slovak National Gallery. Outputs based on artworks of Ludovit Fulla. Processed via Geometric Photo Filter (dev ver). Viewer derived from Tearing Cloth."/>
+	<meta property="og:url" content="http://fulla.haluska.sk" />
+	<link rel="image_src" href="fulla.jpg" / >
+
+
+    <!--<link rel="stylesheet" type="text/css" href="style.css" />-->
+	<style>
+	      body {
+        margin: 0px;
+        padding: 0px;
+      }
+	  
+	td {
+	color: black;
+	font-family: "Arial";
+	font-size: 10pt;
+	font-weight: normal;
+    text-decoration: none;
+}
+
+	a {
+	color: #000000;
+	};
+
+	  </style>
+</head>
+
+<body>
+<center>
+	<table align="center">
+	<tr><td><fx style="font-size:30pt;" onclick='go_left()'"><&nbsp;</fx><p><p><p><fx style="font-size:30pt;" onclick='go_right()'"&nbsp;>></fx></td>
+	<td><canvas id="c"></canvas></td>
+	<td><fx style="font-size:30pt;" onclick='go_right()'"&nbsp;>></fx></td>
+	</tr>
+	<tr><td></td><td align="center">Created during <a href="http://www.hackathon.io/hackathon-sng" target="_blank">Hackathon</a> at Slovak National Gallery. Outputs based on artworks of <a href="https://github.com/SlovakNationalGallery/fulla-data"target="_blank">Ludovit Fulla</a>. Processed via <a href="http://face.haluska.sk" target="_blank">Geometric Photo Filter</a> (dev ver). Viewer derived from <a href="https://github.com/suffick/Tearable-Cloth" target="_blank">Tearing Cloth</a>.</td><td></td></tr>
+	</table>
+</center>
+<!--
+-------------------------------------
+-->
+<script type="text/javascript" src="art/fulla_circ2.js"></script>
+<script type="text/javascript" src="art/test.js"></script>
+<script type="text/javascript" src="art/sqcool_full.js"></script>
+<script type="text/javascript" src="art/fulla_line.js"></script>
+<script type="text/javascript" src="art/fulla_sq2.js"></script>
+<script type="text/javascript" src="art/fulla_triangle.js"></script>
+<script type="text/javascript" src="art/jezis.js"></script>
+<script type="text/javascript" src="art/jezis2.js"></script>
+<script type="text/javascript" src="art/jezis3.js"></script>
+<script type="text/javascript" src="art/jezis4.js"></script>
+<script type="text/javascript" src="art/luka_cool.js"></script>
+<script type="text/javascript" src="art/luka_cool2.js"></script>
+<script type="text/javascript" src="art/luka_ciary.js"></script>
+<script type="text/javascript" src="art/luka_ciary2.js"></script>
+<script type="text/javascript" src="art/myface.js"></script>
+<script type="text/javascript" src="art/nakoni.js"></script>
+<script type="text/javascript" src="art/nakoni2.js"></script>
+<script type="text/javascript" src="art/nakoni3.js"></script>
+<script type="text/javascript" src="art/pistalkar.js"></script>
+<script type="text/javascript" src="art/postavi_l.js"></script>
+<script type="text/javascript" src="art/postavi_ll.js"></script>
+<script type="text/javascript" src="art/sq.js"></script>
+<script type="text/javascript" src="art/tety5.js"></script>
+<script type="text/javascript" src="art/tety6.js"></script>
+<script type="text/javascript" src="art/tety3.js"></script>
+<script type="text/javascript" src="art/zena.js"></script>
+<script type="text/javascript" src="art/zena2.js"></script>
+<script type="text/javascript" src="art/zena3.js"></script>
+<script type="text/javascript" src="art/copana.js"></script>
+<script type="text/javascript" src="art/dama1.js"></script>
+<script type="text/javascript" src="art/dama2.js"></script>
+<script type="text/javascript" src="art/dama3.js"></script>
+<script type="text/javascript" src="art/holazena.js"></script>
+<script type="text/javascript" src="art/hory1.js"></script>
+<script type="text/javascript" src="art/hory2.js"></script>
+<script type="text/javascript" src="art/circles.js"></script>
+<script type="text/javascript" src="art/fulla_circ.js"></script>
+<script type="text/javascript" src="art/test2.js"></script>
+<script type="text/javascript" src="art/hrad5.js"></script>
+<script type="text/javascript" src="art/woman2.js"></script>
+
+
+<!--
+
+<script type="text/javascript" src="art/circles2.js"></script>
+<script type="text/javascript" src="art/fulla_sq.js"></script>
+<script type="text/javascript" src="art/fulla_sq3.js"></script>
+<script type="text/javascript" src="art/line.js"></script>
+<script type="text/javascript" src="art/luka.js"></script>
+
+<script type="text/javascript" src="art/nakoni4.js"></script>
+<script type="text/javascript" src="art/nakoni5.js"></script>
+<script type="text/javascript" src="art/nakoni6.js"></script>
+<script type="text/javascript" src="art/nakoni7.js"></script>
+
+<script type="text/javascript" src="art/postavi.js"></script>
+
+
+<script type="text/javascript" src="art/sqcool.js"></script>
+<script type="text/javascript" src="art/sqcool_.js"></script>
+
+
+<script type="text/javascript" src="art/tety.js"></script>
+<script type="text/javascript" src="art/tety2.js"></script>
+
+<script type="text/javascript" src="art/tety4.js"></script>
+<script type="text/javascript" src="art/vaza.js"></script>
+<script type="text/javascript" src="art/woman.js"></script>
+<script type="text/javascript" src="art/woman2.js"></script>
+<script type="text/javascript" src="art/woman3.js"></script>
+<script type="text/javascript" src="art/woman4.js"></script>
+
+
+<script type="text/javascript" src="art/dedina1.js"></script>
+<script type="text/javascript" src="art/dedina2.js"></script>
+<script type="text/javascript" src="art/dedina3.js"></script>
+<script type="text/javascript" src="art/holazena2.js"></script>
+<script type="text/javascript" src="art/holazena3.js"></script>
+<script type="text/javascript" src="art/holazena4.js"></script>
+<script type="text/javascript" src="art/holazena5.js"></script>
+<script type="text/javascript" src="art/holazena6.js"></script>
+
+<script type="text/javascript" src="art/hrad1.js"></script>
+<script type="text/javascript" src="art/hrad2.js"></script>
+<script type="text/javascript" src="art/hrad3.js"></script>
+<script type="text/javascript" src="art/hrad4.js"></script>
+<script type="text/javascript" src="art/hradline.js"></script>
+<script type="text/javascript" src="art/mlynkec1.js"></script>
+<script type="text/javascript" src="art/mlynkec2.js"></script>
+<script type="text/javascript" src="art/mlynkec3.js"></script>
+<script type="text/javascript" src="art/mlynkec4.js"></script>
+<script type="text/javascript" src="art/zenadieta.js"></script>
+<script type="text/javascript" src="art/zenadieta2.js"></script>
+-->
+    <script type="text/javascript" src="Cloth.js"></script>
+	
+</body>
+
+</html>
