@@ -7,7 +7,9 @@
 // Tearing Cloth by Sufflick was modified to create this small viewer capable
 // to map vector images on cloth model. Thanks a lot for this amazing straightforward
 // piece of physics modelling code.
-
+//
+// featuring fft distortion from microphone - type 'fulla' to activate
+//
 // --------------------------------------------------
 // modified Tearing Cloth code
 
