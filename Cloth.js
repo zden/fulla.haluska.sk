@@ -183,12 +183,6 @@ var Constraint = function (p1, p2) {
     this.length = Math.sqrt(dx*dx + dy*dy);
 };
 
-Constraint.prototype.update = function () {
-
-	var dx = this.p2.x - this.p1.x, dy = this.p2.y - this.p1.y;
-    this.length = Math.sqrt(dx*dx + dy*dy);
-};
-
 Constraint.prototype.resolve = function () {
 
     var diff_x = this.p1.x - this.p2.x,
@@ -243,7 +237,7 @@ Cloth.prototype.rescale = function (x_res, y_res, can_wid, can_hei)
 	var wid_pix = can_hei * rat;
     var start_x = (can_wid - wid_pix) / 2;
 
-	var a, b, c = this.points.length, cc;
+	var a, c = this.points.length;
 	for (a = 0; a < c; a++)
 	{
 			xp = start_x + (this.points[a].grid_x * wid_pix) / (cloth_width);
@@ -251,11 +245,7 @@ Cloth.prototype.rescale = function (x_res, y_res, can_wid, can_hei)
 			this.points[a].x = this.points[a].px = xp;
 			this.points[a].y = this.points[a].py = yp;
 			this.points[a].vx = this.points[a].vy = 0;
-
-			cc = this.points[a].constraints.length;
-			for (b = 0; b < cc; b++)
-				this.points[a].constraints[b].update();
-
+			
 			if (!this.points[a].grid_y)
 				this.points[a].pin(xp, yp);
 	}
@@ -287,17 +277,6 @@ function update() {
 
     cloth.update();
     cloth.draw();
-
-	if (fft && fft.init_done)
-	{
-	    fft.getFFT();
-		var a, c = cloth.points.length;
-	    for (a = 0; a < c; a++)
-	    {
-	    	cloth.points[a].px += (fft.dataArray[a & 127]-128)/12;
-	    	cloth.points[a].py -= (fft.dataArray[(64+a) & 127]-128)/12;
-	    }
-	}
 
     requestAnimFrame(update);
 }
@@ -610,31 +589,14 @@ function go_right()
 	restart();
 }
 
-var fft = 0;
-
-var egg_keys_pos = 0;
-var egg_keys = [ 70, 85, 76, 76, 65 ];
-
 function keydown(e)
 {
-	if (!e) e = event;
+	if (!e) e= event;
 
 	switch(e.keyCode)
 	{
 		case 37: go_left(); break;
 		case 39: go_right(); break;
-		default:
-			if (fft) break;
-			if (egg_keys_pos < 5 && e.keyCode == egg_keys[egg_keys_pos])
-				egg_keys_pos++;
-			else
-				egg_keys_pos = 0;
-			if (egg_keys_pos == 5)
-			{
-				fft = new AudioFFT(128);
-				fft.init(fft);
-			}
-			break;
 	};
 }
 if (document.addEventListener) document.addEventListener("keydown",keydown,false); else if (document.attachEvent) document.attachEvent("onkeydown", keydown); else document.onkeydown= keydown;
@@ -653,44 +615,3 @@ art_copana, art_dama2, art_dama3, art_dama1,
 art_holazena, art_hory2, art_hory1, 
 art_circles, art_fulla_circ,  art_test2, art_hrad5,
 ];
-
-// eastern egg audio stuff
-
-var AudioFFT = function (fft_sizer)
-{
-	navigator.getUserMedia = (navigator.getUserMedia ||
-    	                      navigator.webkitGetUserMedia ||
-        	                  navigator.mozGetUserMedia ||
-            	              navigator.msGetUserMedia) || 0;
-
-	this.init_done = 0;
-	if (!navigator.getUserMedia) { return; }
-	this.init_done = 1;
-	this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-	this.analyser = this.audioCtx.createAnalyser();
-	this.microphone;
-	this.fft_size = this.analyser.fftSize = fft_sizer;
-	this.dataArray = new Uint8Array(this.fft_size);
-}
-
-AudioFFT.prototype.init = function (a)
-{
-	if (navigator.getUserMedia)
-		navigator.getUserMedia({video: false, audio: true},
-		
-		function(stream)
-		{
-			microphone = a.audioCtx.createMediaStreamSource(stream);
-			microphone.connect(a.analyser);
-		//	showData(a);
-		},
-		
-		function(s) { }
-		
-		);
-};
-
-AudioFFT.prototype.getFFT = function ()
-{
-	this.analyser.getByteTimeDomainData(this.dataArray);
-}
