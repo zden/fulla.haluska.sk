@@ -654,7 +654,7 @@ art_holazena, art_hory2, art_hory1,
 art_circles, art_fulla_circ,  art_test2, art_hrad5,
 ];
 
-// eastern egg audio stuff
+// easter egg audio stuff
 
 var AudioFFT = function (fft_sizer)
 {
@@ -682,7 +682,6 @@ AudioFFT.prototype.init = function (a)
 		{
 			microphone = a.audioCtx.createMediaStreamSource(stream);
 			microphone.connect(a.analyser);
-		//	showData(a);
 		},
 		
 		function(s) { }
